@@ -21,6 +21,8 @@ export class quanliang extends plugin {
     }
     async zhudong(e){
         if(e.adapter_id !== 'QQBot') return false
+        if(!e.isGroup) return true
+        if(!e.isMaster) return true
         let res = {}
         try{
             res = await Bot.sendGroupMsg(this.e.self_id,this.e.group_id,'主动测试消息')
