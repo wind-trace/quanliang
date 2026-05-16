@@ -23,3 +23,8 @@ NAPCAT_HTTP_HOST = '127.0.0.1' // napcat开启的http服务器host
 NAPCAT_HTTP_PORT = 3000 // napcat开启的http服务器端口
 NAPCAT_AUTH_TOKEN = 'napcat_uin_to_uid' // napcat鉴权token
 ```
+
+## 群主动测试
+
+请使用我的[🔗QQBot适配器](https://gitee.com/wind-trace-typ/Yunzai-QQBot-Plugin)并更新到最新，再使用本功能
+本功能会使用向触发的群发送主动消息，并且在得到审核通过的事件之后自动撤回本条消息
