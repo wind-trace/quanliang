@@ -11,7 +11,7 @@ export class quanliang extends plugin {
             event: "message",
             priority: 100,
             rule: [{
-                reg: "^#?开全量",
+                reg: "^#开全量",
                 fnc: 'quanliang'
             },{
                 reg: "^#?群主动测试",
