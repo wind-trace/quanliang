@@ -1,6 +1,8 @@
 const NAPCAT_HTTP_HOST = '127.0.0.1' // napcat开启的http服务器host
 const NAPCAT_HTTP_PORT = 3000 // napcat开启的http服务器端口
-const NAPCAT_AUTH_TOKEN = 'napcat_uin_to_uid' // napcat鉴权token
+const NAPCAT_AUTH_TOKEN = 'uin_to_uid' // napcat鉴权token
+const delay = 1000
+const maxRetry = 200
 export class quanliang extends plugin {
     constructor() {
         super({
@@ -11,9 +13,33 @@ export class quanliang extends plugin {
             rule: [{
                 reg: "^#?开全量",
                 fnc: 'quanliang'
-            }
-            ],
+            },{
+                reg: "^#?群主动测试",
+                fnc: 'zhudong'
+            }],
         });
+    }
+    async zhudong(e){
+        if(e.adapter_id !== 'QQBot') return false
+        let res = {}
+        try{
+            res = await Bot.sendGroupMsg(this.e.self_id,this.e.group_id,'主动测试消息')
+        } catch(err){
+            logger.error(err)
+            return false
+        }
+        let msg_res = ''
+        let retry = 0
+        while(!msg_res && retry < maxRetry){
+            msg_res = JSON.parse(await redis.get(`wind-audit-message_id:${res.data?.[0]?.audit_id}`))
+            if(msg_res) break
+            await new Promise(resolve => setTimeout(resolve, delay))
+            retry++
+        }
+        if(msg_res.success){
+            await new Promise(resolve => setTimeout(resolve, delay*5))
+            await this.e.group.recallMsg(msg_res.id)
+        }
     }
     async quanliang(e){
         if(!e.isMaster) return false
