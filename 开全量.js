@@ -1,6 +1,6 @@
-NAPCAT_HTTP_HOST = '127.0.0.1' // napcat开启的http服务器host
-NAPCAT_HTTP_PORT = 3000 // napcat开启的http服务器端口
-NAPCAT_AUTH_TOKEN = 'napcat_uin_to_uid' // napcat鉴权token
+const NAPCAT_HTTP_HOST = '127.0.0.1' // napcat开启的http服务器host
+const NAPCAT_HTTP_PORT = 3000 // napcat开启的http服务器端口
+const NAPCAT_AUTH_TOKEN = 'napcat_uin_to_uid' // napcat鉴权token
 export class quanliang extends plugin {
     constructor() {
         super({
