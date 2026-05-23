@@ -251,3 +251,30 @@ Bot.QQToUid = async(qq) => {
     else
         return false
 }
+export class qqtouid extends plugin {
+    constructor() {
+        super({
+            name: "qqtouid",
+            dsc: "qqtouid",
+            event: "message",
+            priority: 100,
+            rule: [
+                {
+                    reg: "^#?转uid",
+                    fnc: 'qqtouid'
+                }
+            ],
+        });
+    }
+    async qqtouid(e){
+        if(this.e.adapter_id !== 'QQ') return
+        let qq = Number(this.e.msg.replace(/#?转uid/,'').trim())
+        if(!qq) {
+            if(e.at) qq = e.at
+            else return this.reply('请输入正确的qq')
+        }
+        let uid = await Bot.QQToUid(qq)
+        if(!uid) return this.reply('获取uid失败')
+        this.reply(uid)
+    }
+}
