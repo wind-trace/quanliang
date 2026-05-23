@@ -8,6 +8,11 @@
 ```
 git clone https://github.com/wind-trace/quanliang.git ./plugins/kaiquanliang
 ```
+然后执行
+```
+pnpm i
+```
+最后重启yunzai
 
 ## 使用教程
 
@@ -17,7 +22,7 @@ git clone https://github.com/wind-trace/quanliang.git ./plugins/kaiquanliang
 
 ## 注意事项
 
-如果是使用http服务器的方法，一定要填入正确配置，如果填入的我给的值，则直接使用即可，如果自定义了任何值，则需要打开插件然后参考注释修改对应的内容
+如果是使用http服务器的方法，一定要填入正确配置，如果填入的我给的值，则直接使用即可，如果自定义了任何值，则需要打开`qqtouid.js`然后参考注释修改对应的内容
 ```
 NAPCAT_HTTP_HOST = '127.0.0.1' // napcat开启的http服务器host
 NAPCAT_HTTP_PORT = 3000 // napcat开启的http服务器端口
