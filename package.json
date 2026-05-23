@@ -1,0 +1,11 @@
+{
+  "name": "开全量",
+  "version": "1.0.0",
+  "description": "开全量",
+  "type": "module",
+  "author": "windtrace",
+  "dependencies": {
+    "protobufjs": "^7.4.0",
+    "zlib": "^1.0.5"
+  }
+}
