@@ -246,8 +246,11 @@ Bot.QQToUid = async(qq) => {
     let data = await gunzip(payload[1][4])
     if(!data) return false
     let multimsg = decode(data)
-    if(multimsg?.['2']?.['2']?.['1']?.['3']?.['1']?.['2']?.['45']?.['8']?.['6'])
+    if(typeof multimsg?.['2']?.['2']?.['1']?.['3']?.['1']?.['2']?.['45']?.['8']?.['6'] === 'string'){
         return multimsg['2']['2']['1']['3']['1']['2']['45']['8']['6']
+    } else if(typeof multimsg?.[2]?.[2]?.[1]?.[1]?.[2] === 'string') {
+        return multimsg[2][2][1][1][2]
+    }
     else
         return false
 }
