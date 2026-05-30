@@ -178,6 +178,7 @@ async function getResId(napcat,content){
     }
 }
 Bot.QQToUid = async(qq) => {
+    qq = Number(qq)
     if(!qq) return false
     let napcat
     for(const i of Bot.uin){
@@ -185,6 +186,7 @@ Bot.QQToUid = async(qq) => {
             napcat = i
         }
     }
+    logger.info(napcat)
     const content = {
         "45": {
             "1": 396,
@@ -248,8 +250,6 @@ Bot.QQToUid = async(qq) => {
     let multimsg = decode(data)
     if(typeof multimsg?.['2']?.['2']?.['1']?.['3']?.['1']?.['2']?.['45']?.['8']?.['6'] === 'string'){
         return multimsg['2']['2']['1']['3']['1']['2']['45']['8']['6']
-    } else if(typeof multimsg?.[2]?.[2]?.[1]?.[1]?.[2] === 'string') {
-        return multimsg[2][2][1][1][2]
     }
     else
         return false
